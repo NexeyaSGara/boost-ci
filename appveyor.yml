@@ -7,6 +7,24 @@ image: Visual Studio 2015
 
 environment:
   matrix:
+    - platform: x64
+      ARCH: x64-msvc9
+      configuration: Release
+      CMAKE_GENERATOR: "Visual Studio 9 2008 Win64"
+      MSVCVERSION: v90
+      MSVCYEAR: "vs2008"
+      MSVCABR: "9"
+      VC_VER: 9.0
+      PYTHONPATH: c:\Python27-x64\
+      PYTHONPATHOMNI: "/cygdrive/c/Python27-x64/python"
+      BOOST_ROOT: C:/local/boost_1_64_0
+      BOOST_LIBS: C:/local/boost_1_64_0/lib64-msvc-9.0
+      ZMQ_BASE: C:\projects\libzmq
+      IDL_BASE: C:\projects\tangoidl
+      IDL_BIN: C:\Program Files\tangoidl
+      OMNI_BASE: C:\projects\omniORB-4.2.1
+      BOOST_CFG: >-
+          using python : 2.7 : c:/python27-x64/python.exe : c:/python27-x64/include : c:/python27-x64/libs ;
     - platform: win32
       ARCH: win32-msvc10
       configuration: Release
@@ -43,24 +61,6 @@ environment:
       OMNI_BASE: C:\projects\omniORB-4.2.1
       BOOST_CFG: >-
           using python : 2.7 : c:/python27/python.exe : c:/python27/include : c:/python27/libs ;
-    - platform: x64
-      ARCH: x64-msvc9
-      configuration: Release
-      CMAKE_GENERATOR: "Visual Studio 9 2008 Win64"
-      MSVCVERSION: v90
-      MSVCYEAR: "vs2008"
-      MSVCABR: "9"
-      VC_VER: 9.0
-      PYTHONPATH: c:\Python27-x64\
-      PYTHONPATHOMNI: "/cygdrive/c/Python27-x64/python"
-      BOOST_ROOT: C:/local/boost_1_64_0
-      BOOST_LIBS: C:/local/boost_1_64_0/lib64-msvc-9.0
-      ZMQ_BASE: C:\projects\libzmq
-      IDL_BASE: C:\projects\tangoidl
-      IDL_BIN: C:\Program Files\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1
-      BOOST_CFG: >-
-          using python : 2.7 : c:/python27-x64/python.exe : c:/python27-x64/include : c:/python27-x64/libs ;
     - platform: x64
       ARCH: x64-msvc10
       configuration: Release
