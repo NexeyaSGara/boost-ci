@@ -172,12 +172,12 @@ build:
   
 build_script:
   - cmd: cd C:/projects/boost_build/boost_1_64_0
-  - cmd: if %ARCH%==win32-msvc9 b2 toolset=msvc-9.0 --build-type=complete --abbreviate-paths architecture=x86 address-model=32 install -j4 --with-python
-  - cmd: if %ARCH%==x64-msvc9 b2 toolset=msvc-9.0 --build-type=complete --abbreviate-paths architecture=ia64 address-model=64 install -j4 --with-python
-  - cmd: if %ARCH%==win32-msvc10 b2 toolset=msvc-10.0 --build-type=complete --abbreviate-paths architecture=x86 address-model=32 install -j4 --with-python
-  - cmd: if %ARCH%==x64-b2 toolset=msvc-10.0 --build-type=complete --abbreviate-paths architecture=ia64 address-model=64 install -j4 --with-python
-  - cmd: if %ARCH%==x64-msvc12 b2 toolset=msvc-12.0 --build-type=complete --abbreviate-paths architecture=ia64 address-model=64 install -j4 --with-python
-  - cmd: if %ARCH%==x64-msvc14 b2 toolset=msvc-14.0 --build-type=complete --abbreviate-paths architecture=ia64 address-model=64 install -j4 --with-python
+  - cmd: if %ARCH%==win32-msvc9 b2 toolset=msvc-9.0 --build-type=complete --abbreviate-paths architecture=x86 address-model=32 install -j4
+  - cmd: if %ARCH%==x64-msvc9 b2 toolset=msvc-9.0 --build-type=complete --abbreviate-paths architecture=ia64 address-model=64 install -j4
+  - cmd: if %ARCH%==win32-msvc10 b2 toolset=msvc-10.0 --build-type=complete --abbreviate-paths architecture=x86 address-model=32 install -j4
+  - cmd: if %ARCH%==x64-b2 toolset=msvc-10.0 --build-type=complete --abbreviate-paths architecture=ia64 address-model=64 install -j4
+  - cmd: if %ARCH%==x64-msvc12 b2 toolset=msvc-12.0 --build-type=complete --abbreviate-paths architecture=ia64 address-model=64 install -j4
+  - cmd: if %ARCH%==x64-msvc14 b2 toolset=msvc-14.0 --build-type=complete --abbreviate-paths architecture=ia64 address-model=64 install -j4
 
 
 
