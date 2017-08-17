@@ -8,6 +8,24 @@ image: Visual Studio 2015
 environment:
   matrix:
     - platform: win32
+      ARCH: win32-msvc10
+      configuration: Release
+      CMAKE_GENERATOR: "Visual Studio 10 2010"
+      MSVCVERSION: v100
+      MSVCYEAR: "vs2010"
+      MSVCABR: "10"
+      VC_VER: 10.0
+      PYTHONPATH: c:\Python34\
+      PYTHONPATHOMNI: "/cygdrive/c/Python34/python"
+      BOOST_ROOT: C:/local/boost_1_64_0
+      BOOST_LIBS: C:/local/boost_1_64_0/lib32-msvc-10.0
+      ZMQ_BASE: C:\projects\libzmq
+      IDL_BASE: C:\projects\tangoidl
+      IDL_BIN: C:\Program Files (x86)\tangoidl
+      OMNI_BASE: C:\projects\omniORB-4.2.1
+      BOOST_CFG: >-
+          using python : 3.4 : c:/python34/python.exe : c:/python34/include : c:/python34/libs;
+    - platform: win32
       ARCH: win32-msvc9
       configuration: Release
       CMAKE_GENERATOR: "Visual Studio 9 2008"
@@ -43,24 +61,6 @@ environment:
       OMNI_BASE: C:\projects\omniORB-4.2.1
       BOOST_CFG: >-
           using python : 2.7 : c:/python27-x64/python.exe : c:/python27-x64/include : c:/python27-x64/libs;
-    - platform: win32
-      ARCH: win32-msvc10
-      configuration: Release
-      CMAKE_GENERATOR: "Visual Studio 10 2010"
-      MSVCVERSION: v100
-      MSVCYEAR: "vs2010"
-      MSVCABR: "10"
-      VC_VER: 10.0
-      PYTHONPATH: c:\Python34\
-      PYTHONPATHOMNI: "/cygdrive/c/Python34/python"
-      BOOST_ROOT: C:/local/boost_1_64_0
-      BOOST_LIBS: C:/local/boost_1_64_0/lib32-msvc-10.0
-      ZMQ_BASE: C:\projects\libzmq
-      IDL_BASE: C:\projects\tangoidl
-      IDL_BIN: C:\Program Files (x86)\tangoidl
-      OMNI_BASE: C:\projects\omniORB-4.2.1
-      BOOST_CFG: >-
-          using python : 3.4 : c:/python34/python.exe : c:/python34/include : c:/python34/libs;
     - platform: x64
       ARCH: x64-msvc10
       configuration: Release
@@ -121,7 +121,7 @@ init:
   - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
   - del "C:\Program Files (x86)\MSBuild\12.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
   #RDP from start
-  #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
   # Boost
   - cmd: cd "C:\projects\"
   - cmd: md boost_build
@@ -190,7 +190,7 @@ after_build:
 
 on_finish:
   #RDP for finish
-  #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 artifacts:
   - path: ./*.zip
