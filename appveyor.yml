@@ -141,6 +141,9 @@ init:
   - cmd: if %ARCH%==x64-msvc9 call C:\projects\vs2008_patch\setup_x64.bat
   - cmd: if %ARCH%==x32-msvc9 call C:\projects\vs2008_patch\setup_x86.bat
   - cmd: if %ARCH%==x64-msvc9 copy "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\vcvars64.bat" "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\amd64\vcvarsamd64.bat"
+  # adding a boost-config.jam file
+  - cmd: echo %BOOST_CFG% >> %HOMEDRIVE%%HOMEPATH%\user-config.jam
+  - cmd: type %HOMEDRIVE%%HOMEPATH%\user-config.jam
   - cmd: cd "C:\projects\boost-ci"
   
 install:
@@ -158,8 +161,8 @@ install:
   - cmd: echo "Platform='%Platform%'"
   - cmd: set PYTHONPATH=%PYTHONPATH%
   # building bootstrap
-  - cmd: cd C:/projects/boost_build 
-  - cmd: C:/projects/boost_build/bootstrap.bat
+  - cmd: cd C:/projects/boost_build/boost_1_64_0
+  - cmd: C:/projects/boost_build/boost_1_64_0/bootstrap.bat
   
 clone_folder: C:\projects\boost-ci
 
@@ -168,13 +171,13 @@ build:
   verbosity: minimal
   
 build_script:
-  - cmd: cd C:/projects/boost_build
-  - cmd: if %ARCH%==win32-msvc9 b2 toolset=msvc-9.0 --build-type=complete --abbreviate-paths architecture=x86 address-model=86 install -j4
-  - cmd: if %ARCH%==x64-msvc9 b2 toolset=msvc-9.0 --build-type=complete --abbreviate-paths architecture=x64 address-model=64 install -j4
-  - cmd: if %ARCH%==win32-msvc10 b2 toolset=msvc-10.0 --build-type=complete --abbreviate-paths architecture=x86 address-model=86 install -j4
-  - cmd: if %ARCH%==x64-b2 toolset=msvc-10.0 --build-type=complete --abbreviate-paths architecture=x64 address-model=64 install -j4
-  - cmd: if %ARCH%==x64-msvc12 b2 toolset=msvc-12.0 --build-type=complete --abbreviate-paths architecture=x64 address-model=64 install -j4
-  - cmd: if %ARCH%==x64-msvc14 b2 toolset=msvc-14.0 --build-type=complete --abbreviate-paths architecture=x64 address-model=64 install -j4
+  - cmd: cd C:/projects/boost_build/boost_1_64_0
+  - cmd: if %ARCH%==win32-msvc9 b2 toolset=msvc-9.0 --build-type=complete --abbreviate-paths architecture=x86 address-model=32 install -j4 --with-python
+  - cmd: if %ARCH%==x64-msvc9 b2 toolset=msvc-9.0 --build-type=complete --abbreviate-paths architecture=x64 address-model=64 install -j4 --with-python
+  - cmd: if %ARCH%==win32-msvc10 b2 toolset=msvc-10.0 --build-type=complete --abbreviate-paths architecture=x86 address-model=32 install -j4 --with-python
+  - cmd: if %ARCH%==x64-b2 toolset=msvc-10.0 --build-type=complete --abbreviate-paths architecture=x64 address-model=64 install -j4 --with-python
+  - cmd: if %ARCH%==x64-msvc12 b2 toolset=msvc-12.0 --build-type=complete --abbreviate-paths architecture=x64 address-model=64 install -j4 --with-python
+  - cmd: if %ARCH%==x64-msvc14 b2 toolset=msvc-14.0 --build-type=complete --abbreviate-paths architecture=x64 address-model=64 install -j4 --with-python
 
 
 
