@@ -159,7 +159,7 @@ install:
   - cmd: set PYTHONPATH=%PYTHONPATH%
   # building bootstrap
   - cmd: cd C:/projects/boost_build 
-  - cmd: bootstrap.bat
+  - cmd: C:/projects/boost_build/bootstrap.bat
   
 clone_folder: C:\projects\boost-ci
 
